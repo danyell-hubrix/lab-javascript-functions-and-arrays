@@ -98,3 +98,119 @@ var matrix = [
   [20, 73, 35, 29, 78, 31, 90, 1, 74, 31, 49, 71, 48, 86, 81, 16, 23, 57, 5, 54],
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
+
+/*
+return the larger of two numbers
+param a,b: numbers to be compared
+returns: the larger of the 2 numbers
+*/
+function maxOfTwoNumbers(a,b) {
+  if (a > b) return a;
+  return b;
+}
+
+/*
+ * FindLongestWord - find longest word in an array
+ * Param wordArr: array of strings (words)
+ * Returns: the longest string in the array
+*/
+function findLongestWord(wordArr) {
+  var longestWordSoFar = undefined;
+  var longestLengthSoFar = 0;
+  for(var i = 0; i < wordArr.length; i++) {
+    var thisLen = wordArr[i].length;
+    if (thisLen > longestLengthSoFar) {
+      longestLengthSoFar = thisLen;
+      longestWordSoFar = wordArr[i];
+    }
+  }
+  return longestWordSoFar;
+}
+
+/* add up a bunch of numbers
+param: numArr: array of numbers
+returns: sum of all the numbers
+*/
+function sumArray(numArr) {
+  var sumItAll = 0;
+  if (typeof(numArr) != 'object') return 0;
+  if (numArr.length == 0) return 0;
+
+  for (var i = 0; i < numArr.length; i++) {
+    sumItAll += numArr[i];
+  }
+  return sumItAll;
+}
+
+/*
+* Compute average of a list of numbers.
+Param: numArr, array of numbers
+Returns: average of all those numbers
+*/
+function averageNumbers(numArr) {
+  if (typeof(numArr) != 'object') return undefined;
+  if (numArr.length == 0) return undefined;
+  var sumIt = sumArray(numArr);
+  return sumIt / numArr.length;
+}
+
+/*
+Compute average length of a list of words
+param: wordArr, array of strings
+returns: average length of those strings (numeric)
+*/
+function averageWordLength(wordArr) {
+  if (typeof(wordArr) != 'object') return undefined;
+  if (wordArr.length == 0) return undefined;
+  // First sum all lengths
+  var sumWordLengths = 0;
+  wordArr.forEach(function(oneword) {
+    sumWordLengths += oneword.length;
+  });
+  return sumWordLengths / wordArr.length;
+}
+
+/*
+DeDup an array of strings (words)
+param: wordArr, array of strings
+returns: dedeup'd array
+*/
+function uniquifyArray(wordArr) {
+  if (typeof(wordArr) != 'object') return undefined;
+  if (wordArr.length == 0) return undefined;
+  var uniqarr = [];
+  wordArr.forEach(function (oneWord) {
+    if (uniqarr.indexOf(oneWord) == -1) { // if not there yet...
+      uniqarr.push(oneWord);  // add it
+    }
+  });
+  return uniqarr;
+}
+
+/*
+find if word is present in a list of words
+param:
+haystack, array of strings (words)
+needle, string to seek
+return: true if found else false
+*/
+function doesWordExist(haystack,needle) {
+  if (typeof(haystack) != 'object') return undefined;
+  if (haystack.length == 0) return false;
+  if (typeof(needle) != 'string') return undefined;
+  for (var i = 0; i < haystack.length; i++) {
+    if (needle == haystack[i]) return true;
+  }
+  return false;
+}
+
+function howManyTimes(haystack,needle) {
+  if (typeof(haystack) != 'object') return undefined;
+  if (haystack.length == 0) return false;
+  if (typeof(needle) != 'string') return undefined;
+  var occurenceCount = 0;
+  for (var i = 0; i < haystack.length; i++) {
+    if (needle == haystack[i]) occurenceCount++;
+  }
+  return occurenceCount;
+}
